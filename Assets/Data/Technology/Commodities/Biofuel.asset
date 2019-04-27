@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 429eb01a2e4f341e69f9d2a635a8e024, type: 3}
+  m_Name: Biofuel
+  m_EditorClassIdentifier: 
+  techName: Biofuel
+  descrption: Research how to use excess food waste to create energy
+  techSprite: {fileID: 21300000, guid: f859d3ce8b577455985dc8dcb019f6d1, type: 3}
+  researchCost: 1000
+  techType: 0
+  commodity: {fileID: 11400000, guid: 2374997fed7d44b0d930c0afe67cae0a, type: 2}
+  efficencymod: 0
+  DependantTech:
+  - {fileID: 11400000, guid: 733bcf7f587cc4c49a2f78c4e5699ddd, type: 2}

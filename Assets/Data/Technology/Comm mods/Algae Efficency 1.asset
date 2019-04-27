@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 429eb01a2e4f341e69f9d2a635a8e024, type: 3}
+  m_Name: Algae Efficency 1
+  m_EditorClassIdentifier: 
+  techName: Algae Efficency 1
+  descrption: +100% efficency to algae Farms
+  techSprite: {fileID: 21300000, guid: 53cc673e0eae94ab8a1cf9ef11a836fd, type: 3}
+  researchCost: 1000
+  techType: 1
+  commodity: {fileID: 11400000, guid: 448283cee9c954b46a590331f1da2cf8, type: 2}
+  efficencymod: 100
+  DependantTech:
+  - {fileID: 11400000, guid: 733bcf7f587cc4c49a2f78c4e5699ddd, type: 2}
