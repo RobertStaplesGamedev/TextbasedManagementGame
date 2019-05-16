@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d61ba99aa27854b92bc72d29c605b0dd, type: 3}
   m_Name: Solar
   m_EditorClassIdentifier: 
-  commodityName: Solar
+  commodityName: Solar Farm
   cost: 25
   value: 2
   storage: 5

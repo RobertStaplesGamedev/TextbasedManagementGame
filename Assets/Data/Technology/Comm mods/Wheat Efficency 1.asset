@@ -9,15 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 429eb01a2e4f341e69f9d2a635a8e024, type: 3}
+  m_Script: {fileID: 11500000, guid: c71fd0a2006e54d35a5cc7cc50179b33, type: 3}
   m_Name: Wheat Efficency 1
   m_EditorClassIdentifier: 
   techName: Wheat Efficency 1
-  descrption: +100% Wheat Efficency
+  descrption: 100%+ Increase to Wheat Farm Efficency
   techSprite: {fileID: 21300000, guid: adbe047a0e73242d58a3e63059298fc1, type: 3}
-  researchCost: 5000
+  startingTechnology: 0
+  researchCost: 10000
   techType: 1
-  commodity: {fileID: 0}
+  commodity: {fileID: 11400000, guid: 254bd0770e55e493eb778aa0cb516501, type: 2}
   efficencymod: 100
   DependantTech:
   - {fileID: 11400000, guid: be6c87ad897a04c57b89789fd17002ea, type: 2}

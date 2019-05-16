@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d61ba99aa27854b92bc72d29c605b0dd, type: 3}
   m_Name: Algae
   m_EditorClassIdentifier: 
-  commodityName: Algae
+  commodityName: Algae Farm
   cost: 25
   value: 1
   storage: 10
@@ -20,3 +20,4 @@ MonoBehaviour:
   storageSucess: Algae loaded into ship
   storageFailMoney: Not enough money
   storageFailCap: Not enough space
+  commodityType: 0

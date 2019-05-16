@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c6449a78079e4eaab44626e9935fa6c, type: 3}
+  m_Name: Start
+  m_EditorClassIdentifier: 
+  dialougeText: You have landed on mars a representative of the weyland corporation.
+    your job is to setup a rich and prosperous colony
+  dependancies: 0
+  dependantEvent: {fileID: 0}
+  triggerType: 0
+  day: 0
+  month: 0
+  year: 0
+  resource: 0
+  greaterThan: 0
+  resourceValue: 0
+  technology: {fileID: 0}
+  shipLocation: 0
+  dialouge: 1
+  activatePanel: 0
+  panelID: 

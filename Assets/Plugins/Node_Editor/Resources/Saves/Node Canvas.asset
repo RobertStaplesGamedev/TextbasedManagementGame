@@ -1,0 +1,120 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26a89c36c30b2e940804d7efcccaf0bd, type: 3}
+  m_Name: Node Canvas
+  m_EditorClassIdentifier: 
+  editorStates:
+  - {fileID: 114683420999627008}
+  saveName: Node Canvas
+  savePath: Assets/Plugins/Node_Editor/Resources/Saves/Node Canvas.asset
+  livesInScene: 0
+  nodes:
+  - {fileID: 114327943625919618}
+  - {fileID: 114191312472091112}
+  groups: []
+--- !u!114 &114191312472091112
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71ed5bdd08bdd4c3982cd74613c7cd48, type: 3}
+  m_Name: New Technology
+  m_EditorClassIdentifier: 
+  position: {x: -139.29005, y: -668.27}
+  dynamicConnectionPorts:
+  - {fileID: 114985533202313306}
+  backgroundColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  labels:
+  - 
+  labels2: []
+--- !u!114 &114327943625919618
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71ed5bdd08bdd4c3982cd74613c7cd48, type: 3}
+  m_Name: New Technology
+  m_EditorClassIdentifier: 
+  position: {x: 264.69992, y: -693.26}
+  dynamicConnectionPorts:
+  - {fileID: 114338717830406794}
+  backgroundColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  labels:
+  - 
+  labels2: []
+--- !u!114 &114338717830406794
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: Output
+  m_EditorClassIdentifier: 
+  body: {fileID: 114327943625919618}
+  direction: 1
+  maxConnectionCount: 0
+  styleID: System.String
+  _connections:
+  - {fileID: 114985533202313306}
+  side: 4
+  sidePosition: 145.97754
+  sideOffset: 0
+--- !u!114 &114683420999627008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6ab6487237ff124ea4c2aa5de9ce3fb, type: 3}
+  m_Name: MainEditorState
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 11400000}
+  parentEditor: {fileID: 0}
+  selectedNode: {fileID: 114191312472091112}
+  panOffset: {x: -127.41995, y: 511.82}
+  zoom: 0.96
+--- !u!114 &114985533202313306
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: Output
+  m_EditorClassIdentifier: 
+  body: {fileID: 114191312472091112}
+  direction: 2
+  maxConnectionCount: 1
+  styleID: System.String
+  _connections:
+  - {fileID: 114338717830406794}
+  side: 2
+  sidePosition: 145.97754
+  sideOffset: 0

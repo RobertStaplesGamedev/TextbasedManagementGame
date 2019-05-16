@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c6449a78079e4eaab44626e9935fa6c, type: 3}
+  m_Name: MiningTutorial
+  m_EditorClassIdentifier: 
+  dialougeText: You have mining now, good job you. so... start?
+  dependancies: 1
+  dependantEvent: {fileID: 11400000, guid: b6473f71b26ed4f34943d494b06e1c3d, type: 2}
+  triggerType: 3
+  day: 0
+  month: 0
+  year: 0
+  oreData: {fileID: 0}
+  resource: 0
+  greaterThan: 0
+  resourceValue: 0
+  technology: {fileID: 11400000, guid: 733bcf7f587cc4c49a2f78c4e5699ddd, type: 2}
+  shipLocation: 0
+  dialouge: 1
+  activatePanel: 1
+  panelID: Ore

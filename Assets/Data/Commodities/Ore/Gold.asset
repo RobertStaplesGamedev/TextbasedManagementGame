@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d61ba99aa27854b92bc72d29c605b0dd, type: 3}
+  m_Name: Gold
+  m_EditorClassIdentifier: 
+  commodityName: Gold
+  cost: 0
+  value: 0
+  storage: 1
+  startAmount: 0
+  storageSucess: Gold loaded onto ship
+  storageFailMoney: 
+  storageFailCap: 
+  commodityType: 3
+  OreData: {fileID: 11400000, guid: e0edfc0f620864f16bc47d3e5146db10, type: 2}

@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 429eb01a2e4f341e69f9d2a635a8e024, type: 3}
+  m_Script: {fileID: 11500000, guid: c71fd0a2006e54d35a5cc7cc50179b33, type: 3}
   m_Name: Biofuel
   m_EditorClassIdentifier: 
   techName: Biofuel

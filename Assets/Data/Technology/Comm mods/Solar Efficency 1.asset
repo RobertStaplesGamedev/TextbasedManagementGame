@@ -9,13 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 429eb01a2e4f341e69f9d2a635a8e024, type: 3}
+  m_Script: {fileID: 11500000, guid: c71fd0a2006e54d35a5cc7cc50179b33, type: 3}
   m_Name: Solar Efficency 1
   m_EditorClassIdentifier: 
   techName: Solar Efficency 1
-  descrption: +%100 efficency to solar panels
+  descrption: 100%+ Increase to Solar Farm Efficency
   techSprite: {fileID: 21300000, guid: 7caff2a97b20845709afe510c8f80cce, type: 3}
-  researchCost: 2000
+  startingTechnology: 0
+  researchCost: 1000
   techType: 1
   commodity: {fileID: 11400000, guid: dc422cb1e15ec4e65bf0c474b69ef138, type: 2}
   efficencymod: 100

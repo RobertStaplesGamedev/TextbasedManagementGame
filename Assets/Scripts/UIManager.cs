@@ -4,61 +4,56 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class UIManager : MonoBehaviour
-{
-    public GameManager gameManager;
-    
-    public TMP_Text foodNum;
-    public TMP_Text moneyNum;
-    public TMP_Text popNum;
-    public TMP_Text energyNum;
-    public TMP_Text popSpareNum;
+namespace Colony {
 
+    public class UIManager : MonoBehaviour
+    {
+        public GameManager gameManager;
+        
+        public TMP_Text dateNum;
 
-    public GameObject oreDial;
-    public TMP_Text oreNum;
-    public TMP_Text oreCapNum;
+        public GameObject foodLabel;
+        public GameObject energyLabel;
+        public GameObject moneyLabel;
+        public GameObject populationLabel;
+        public GameObject populationSpareLabel;
 
-    public TMP_Text dateNum;
+        public Color positiveAmount, negativeAmount;
+        public Color positiveGrowth, negativeGrowth, neutralGrwoth;
 
-    public void WriteValues() {
-        if (gameManager.foodGrowth < 0) {
-            foodNum.text = gameManager.food.ToString() + " (" + gameManager.foodGrowth + ")";
-        } else {
-            foodNum.text = gameManager.food.ToString() + " (+" + gameManager.foodGrowth + ")";
-        }
-        if (gameManager.energyGrowth < 0) {
-            energyNum.text = gameManager.energy.ToString() + " (" + gameManager.energyGrowth + ")";
-        } else {
-            energyNum.text = gameManager.energy.ToString() + " (+" + gameManager.energyGrowth + ")";
+        void Start() {
+            //gameManager = this.transform.parent.GetComponent<GameManager>();
         }
 
-        popNum.text = gameManager.popAmount.ToString();
-        popSpareNum.text = gameManager.popSpare.ToString();
+        public void WriteValues() {
+            dateNum.text = gameManager.day.ToString() + "/" + gameManager.month.ToString() + "/" + gameManager.year.ToString();
 
-        if (gameManager.income < 0) {
-            moneyNum.text = gameManager.money.ToString() + " (" + gameManager.income + ")";
-        } else {
-            moneyNum.text = gameManager.money.ToString() + " (+" + gameManager.income + ")";
+            WriteGrowth(foodLabel, gameManager.food, gameManager.foodGrowth);
+            WriteGrowth(energyLabel, gameManager.energy, gameManager.energyGrowth);
+            WriteGrowth(moneyLabel, gameManager.money, gameManager.income);
+
+            populationLabel.transform.GetChild(0).GetComponent<TMP_Text>().text = gameManager.popAmount.ToString();
+            populationSpareLabel.transform.GetChild(0).GetComponent<TMP_Text>().text = gameManager.popSpare.ToString();
         }
 
-        UpdateOreValues(gameManager.oreCap);
-        dateNum.text = gameManager.day.ToString() + "/" + gameManager.month.ToString() + "/" + gameManager.year.ToString();
-        if (gameManager.money < 0) {
-            moneyNum.color = Color.red;
-        } else {
-            moneyNum.color = Color.black;
+        void WriteGrowth(GameObject label, int amount, float growth) {
+            if (amount > 0) {
+                label.transform.GetChild(0).GetComponent<TMP_Text>().color = positiveAmount;
+            } else {
+                label.transform.GetChild(0).GetComponent<TMP_Text>().color = negativeAmount;
+            }
+            label.transform.GetChild(0).GetComponent<TMP_Text>().text = amount.ToString();
+            if (growth > 0) {
+                label.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().color = positiveGrowth;
+                label.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = " (+" + growth + ")";
+
+            } else if(growth < 0) {
+                label.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().color = negativeGrowth;
+                label.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = " (-" + growth + ")";
+            } else {
+                label.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().color = neutralGrwoth;
+                label.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = " (+" + growth + ")";
+            }
         }
     }
-
-    public void UpdateOreValues(int oreCap) {
-        float f = Mathf.InverseLerp(0,oreCap,gameManager.oreAmount);
-        f = Mathf.Lerp(-34f,34f,f);
-        oreDial.GetComponent<RectTransform>().eulerAngles = new Vector3(0,0,-f);
-
-        oreNum.text = gameManager.oreAmount.ToString();
-        oreCapNum.text = "/" + oreCap.ToString();
-
-    }
-
 }

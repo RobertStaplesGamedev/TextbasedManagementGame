@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c71fd0a2006e54d35a5cc7cc50179b33, type: 3}
+  m_Name: Research Efficency 2
+  m_EditorClassIdentifier: 
+  techName: Research Efficency 2
+  descrption: 100%+ Increase to Research Efficency
+  techSprite: {fileID: 21300000, guid: eda43bbe73b0642c49f93875ce9b11cb, type: 3}
+  startingTechnology: 0
+  researchCost: 10000
+  techType: 1
+  commodity: {fileID: 11400000, guid: e73bbb68ef1264d8292422f838d67bb5, type: 2}
+  efficencymod: 100
+  DependantTech:
+  - {fileID: 11400000, guid: 8f90cf4cd7b184cec80e9e3351203943, type: 2}
