@@ -20,5 +20,6 @@ MonoBehaviour:
   storageSucess: Gold loaded onto ship
   storageFailMoney: 
   storageFailCap: 
-  commodityType: 3
+  type: 1
+  resource: 3
   OreData: {fileID: 11400000, guid: e0edfc0f620864f16bc47d3e5146db10, type: 2}

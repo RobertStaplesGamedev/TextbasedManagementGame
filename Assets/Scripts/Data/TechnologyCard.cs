@@ -13,12 +13,12 @@ namespace Colony {
         public bool startingTechnology;
         public int researchCost;
 
+        public TechnologyCard[] DependantTech;
+
         public enum TechType {Commodity,CommodityModifier,RescourceModifier, Event}
         public TechType techType;
 
-        public CommodityData commodity;
-
-        public int efficencymod;
-        public TechnologyCard[] DependantTech;
+        [HideInInspector]public int efficencymod;
+        [HideInInspector]public CommodityData commodity;
     }
 }

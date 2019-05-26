@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c71fd0a2006e54d35a5cc7cc50179b33, type: 3}
-  m_Name: Silicon Mining
+  m_Name: Titainum Mining
   m_EditorClassIdentifier: 
-  techName: Silicon Mining
-  descrption: Figure out how to mine on the surface of mars
-  techSprite: {fileID: 21300000, guid: 56ede93a8560841f5b76e25e20db3eda, type: 3}
+  techName: Titainum Mining
+  descrption: 'Learn how to mine '
+  techSprite: {fileID: 21300000, guid: 3fddb98ebc7bb4e4db639584e3ab9115, type: 3}
   startingTechnology: 0
-  researchCost: 50
-  techType: 0
-  commodity: {fileID: 11400000, guid: ca0d696c19df147698adc4f600ffb932, type: 2}
-  efficencymod: 0
+  researchCost: 10000
   DependantTech: []
+  techType: 0
+  efficencymod: 0
+  commodity: {fileID: 11400000, guid: d8794b9b4ab804d1aaadbce73c9024aa, type: 2}

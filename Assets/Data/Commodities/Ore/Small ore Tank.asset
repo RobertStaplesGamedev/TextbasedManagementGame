@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d61ba99aa27854b92bc72d29c605b0dd, type: 3}
-  m_Name: Iron
+  m_Name: Small ore Tank
   m_EditorClassIdentifier: 
-  commodityName: Iron
-  cost: 0
-  value: 0
-  storage: 1
+  commodityName: Small Ore Tank
+  cost: 200
+  value: 1000
+  storage: 100
   startAmount: 0
-  storageSucess: Silicon Ore loaded onto ship
-  storageFailMoney: 
-  storageFailCap: No space on ship
-  type: 1
+  storageSucess: Small ore tank bought
+  storageFailMoney: Not enough Money
+  storageFailCap: Not enough Space
+  type: 0
   resource: 3
-  OreData: {fileID: 11400000, guid: 3b19e21080469457fbdd801badd4486d, type: 2}
+  OreData: {fileID: 0}

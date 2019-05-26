@@ -255,13 +255,12 @@ namespace Colony {
                         gameManger.shipManager.shipInventory[i].commodObject.SetActive(true);
                     }
                 }
-                if (currentTech.techCommodity.commodityType == CommodityData.CommodityType.Ore && currentTech.techCommodity.commodityName != "Drill") {
+                if (currentTech.techCommodity.resource == CommodityData.Resource.Ore && currentTech.techCommodity.type != CommodityData.Type.Building) {
                     gameManger.oreManager.CreateOre(currentTech.techCommodity.OreData);
                     gameManger.oreManager.AddMiningCard(currentTech.techCommodity.OreData);
                 } else {
                     gameManger.productionManager.CreateCommodity(currentTech.techCommodity);
                 }
-                
                 
             } else if (currentTech.techtype == TechnologyCard.TechType.CommodityModifier) {
                 for (int i = 0; i < gameManger.productionManager.commodities.Count; i++) {
@@ -273,16 +272,19 @@ namespace Colony {
 
             if (currentTech == leftTech) {
                 leftCard.transform.GetComponent<Image>().color = unselectedCard;
+                leftCard.transform.GetChild(2).GetComponent<Image>().color = unselectedCard;
                 leftCard.transform.GetChild(3).GetChild(0).GetComponent<RectTransform>().sizeDelta = new Vector2(0, leftCard.transform.GetChild(3).GetChild(0).GetComponent<RectTransform>().sizeDelta.y);
                 SetCanResearch();
                 ShuffleDeck();
             } else if (currentTech == middleTech) {
                 middleCard.transform.GetComponent<Image>().color = unselectedCard;
+                middleCard.transform.GetChild(2).GetComponent<Image>().color = unselectedCard;
                 middleCard.transform.GetChild(3).GetChild(0).GetComponent<RectTransform>().sizeDelta = new Vector2(0, leftCard.transform.GetChild(3).GetChild(0).GetComponent<RectTransform>().sizeDelta.y);
                 SetCanResearch();
                 ShuffleDeck();
             } else if (currentTech == rightTech) {
                 rightCard.transform.GetComponent<Image>().color = unselectedCard;
+                rightCard.transform.GetChild(2).GetComponent<Image>().color = unselectedCard;
                 rightCard.transform.GetChild(3).GetChild(0).GetComponent<RectTransform>().sizeDelta = new Vector2(0, leftCard.transform.GetChild(3).GetChild(0).GetComponent<RectTransform>().sizeDelta.y);
                 SetCanResearch();
                 ShuffleDeck();

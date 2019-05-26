@@ -17,8 +17,8 @@ MonoBehaviour:
   techSprite: {fileID: 21300000, guid: 80ef61f8c38334dbc9c82ce27e5ebb79, type: 3}
   startingTechnology: 0
   researchCost: 2000
-  techType: 1
-  commodity: {fileID: 11400000, guid: 62b463d9a3aa448399635a06b1fcebeb, type: 2}
-  efficencymod: 100
   DependantTech:
   - {fileID: 11400000, guid: 733bcf7f587cc4c49a2f78c4e5699ddd, type: 2}
+  techType: 1
+  efficencymod: 100
+  commodity: {fileID: 11400000, guid: 62b463d9a3aa448399635a06b1fcebeb, type: 2}

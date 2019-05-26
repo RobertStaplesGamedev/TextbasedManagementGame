@@ -10,16 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c71fd0a2006e54d35a5cc7cc50179b33, type: 3}
-  m_Name: PotatoFarm
+  m_Name: Silicon Mining
   m_EditorClassIdentifier: 
-  techName: Potato farm
-  descrption: Figure out how to grow potatos in the soils of mars. without feces this
-    time
-  techSprite: {fileID: 21300000, guid: 96ff0766b451f41d0809d2b35d6d9f3f, type: 3}
+  techName: Silicon Mining
+  descrption: Figure out how to mine on the surface of mars
+  techSprite: {fileID: 21300000, guid: 8c89644c1af104457a16ad38ae4eab86, type: 3}
   startingTechnology: 0
-  researchCost: 500
-  DependantTech:
-  - {fileID: 11400000, guid: 733bcf7f587cc4c49a2f78c4e5699ddd, type: 2}
+  researchCost: 50
+  DependantTech: []
   techType: 0
   efficencymod: 0
-  commodity: {fileID: 11400000, guid: a123fe5fb8be146f0885e41406f3e99d, type: 2}
+  commodity: {fileID: 11400000, guid: ca0d696c19df147698adc4f600ffb932, type: 2}

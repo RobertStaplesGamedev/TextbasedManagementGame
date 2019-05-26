@@ -101,8 +101,8 @@ namespace Colony {
         }
 
         void CalculateGrowth() {
-            foodGrowth = productionManager.CalculateProd(CommodityData.CommodityType.Food) - (hunger * popAmount);
-            energyGrowth = productionManager.CalculateProd(CommodityData.CommodityType.Energy) - (energysuck * popAmount);
+            foodGrowth = productionManager.CalculateProd(CommodityData.Resource.Food) - (hunger * popAmount);
+            energyGrowth = productionManager.CalculateProd(CommodityData.Resource.Energy) - (energysuck * popAmount);
             income = -(pop.cost * (popAmount - 1));
         }
 
@@ -208,7 +208,7 @@ namespace Colony {
                 timeInDayDelta = 0;
                 oreManager.MineAll();
                 oreManager.IncrementOreRate();
-                techManager.UpdateResearch(productionManager.CalculateProd(CommodityData.CommodityType.Research));
+                techManager.UpdateResearch(productionManager.CalculateProd(CommodityData.Resource.Research));
                 //Check for fail Conditions
                 DebtCheck();
                 StarveCheck();

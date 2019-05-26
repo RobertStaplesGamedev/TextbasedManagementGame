@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Iron
   m_EditorClassIdentifier: 
   title: Iron
-  panelImage: {fileID: 0}
+  panelImage: {fileID: 21300000, guid: 6d85164030824447f8a1d936744cd6c8, type: 3}
   rateCap: 2
   rateStart: 2
   RateBottom: 0.01

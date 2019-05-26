@@ -28,4 +28,6 @@ MonoBehaviour:
   shipLocation: 0
   dialouge: 1
   activatePanel: 1
+  deactivatePanel: 1
   panelID: Mining Pane
+  deactivatePanelID: Ore

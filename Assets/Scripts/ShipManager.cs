@@ -106,7 +106,10 @@ namespace Colony {
                         gameManager.popSpare +=popBought;
                         popBought = 0;
                         for (int i = 0; i < shipInventory.Count ;i++) {
-                            gameManager.productionManager.AddCommodity(shipInventory[i]);
+                            if (shipInventory[i].amount > 0) {
+                                Debug.Log(shipInventory[i].commodity.commodityName);
+                                gameManager.productionManager.AddCommodity(shipInventory[i]);
+                            }
                         }
                         shipStorage = 0;
                         textManager.SendMessageToChat("The ship has arrived on mars", Message.MessageType.info);
@@ -125,7 +128,7 @@ namespace Colony {
                 }
             }
             for (int i = 0; i < shipInventory.Count;i++) {
-                if (shipInventory[i].commodity.commodityType != CommodityData.CommodityType.Ore) {
+                if (shipInventory[i].commodity.type == CommodityData.Type.Building) {
                     shipInventory[i].commodObject.transform.GetChild(1).GetChild(0).GetComponent<TMP_Text>().text = shipInventory[i].amount.ToString();
                 }
             }
@@ -153,11 +156,13 @@ namespace Colony {
             }
         }
 
-
         public void SellOre() {
             for (int i = 0; i < shipInventory.Count ;i++) {
-                if (shipInventory[i].commodity.commodityType == CommodityData.CommodityType.Ore && shipInventory[i].commodity.commodityName != "Drill" && shipInventory[i].commodObject.activeSelf) {
-                    gameManager.oreManager.SellOre(shipInventory[i].commodity.OreData, shipInventory[i].amount);
+                if (shipInventory[i].commodity.resource == CommodityData.Resource.Ore && shipInventory[i].commodity.type != CommodityData.Type.Building && shipInventory[i].commodObject.activeSelf) {
+                    if (shipInventory[i].amount > 0) {
+                        gameManager.oreManager.SellOre(shipInventory[i].commodity.OreData, shipInventory[i].amount);
+                    }
+                    shipInventory[i].amount = 0;
                 }
             }
         }
@@ -182,7 +187,7 @@ namespace Colony {
                         } else if (shipInventory[i].commodity.storage > (shipCap - shipStorage)) {
                             gameManager.textManager.SendMessageToChat(shipInventory[i].commodity.storageFailCap, Message.MessageType.info);
                         }
-                        shipInventory[i].commodObject.transform.GetChild(1).GetChild(0).GetComponent<TMP_Text>().text = shipInventory[i].commodObject.ToString();
+                        shipInventory[i].commodObject.transform.GetChild(1).GetChild(0).GetComponent<TMP_Text>().text = shipInventory[i].amount.ToString();
                     }
                 }
             }
@@ -312,6 +317,7 @@ namespace Colony {
                 shipYearCheck = gameManager.year + 0;
             }
         }
+
         void EnableButtons(bool enable) {
             for (int i = 0; i < shipInventory.Count ;i++) {
                     shipInventory[i].commodObject.GetComponent<Button>().interactable = enable;
@@ -320,6 +326,7 @@ namespace Colony {
             energyBoughtObject.GetComponent<Button>().interactable = enable;
             popBoughtObject.GetComponent<Button>().interactable = enable;
         }
+
         void SetShipFade(bool launched)
         {
             //mask.GetComponent<Animator>().SetBool("launch", launched);
@@ -331,7 +338,7 @@ namespace Colony {
     public class ShipItem {
         public string Name;
         public CommodityData commodity;
-        public int amount;
+        [HideInInspector] public int amount;
         public GameObject commodObject;
     }
 }

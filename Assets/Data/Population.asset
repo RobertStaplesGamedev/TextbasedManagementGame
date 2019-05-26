@@ -20,4 +20,6 @@ MonoBehaviour:
   storageSucess: Staff hired and aboard ship
   storageFailMoney: Staff Fired and aboard ship
   storageFailCap: Not enough space
-  commodityType: 4
+  type: 0
+  resource: 4
+  OreData: {fileID: 0}

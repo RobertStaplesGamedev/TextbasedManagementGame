@@ -20,17 +20,22 @@ namespace Colony {
 
         int upgradeStorageCost;
         public CommodityData drillData;
+        int drillSpare;
+        public CommodityData tankData;
 
         [Header("UI")]
         public GameObject tutorialPanel;
         public GameObject tutorialDial_Obj;
+        public TMP_Text tutorialOreRate;
         public TMP_Text tutorialStorage_Txt;
         public TMP_Text tutorialCapacity_Txt;
         
+        public TMP_Text miningDrills_Txt;
+        public TMP_Text drillsSpare_Txt;
+
         public GameObject dial_Obj;
         public TMP_Text storage_Txt;
         public TMP_Text capacity_Txt;
-        public TMP_Text oreRate;
 
         public OreData siliconOre;
         public OreData ironOre;
@@ -44,7 +49,6 @@ namespace Colony {
         Ore rightOre;
 
         bool isAddingStaff;
-        int drillSpare;
 
         public void StartOre() {
             upgradeStorageCost = capacity / 10;
@@ -61,14 +65,27 @@ namespace Colony {
         }
 
         public void WriteValues() {
-            float f = Mathf.InverseLerp(0,capacity,storage);
-            f = Mathf.Lerp(-34f,34f,f);
-            tutorialDial_Obj.GetComponent<RectTransform>().eulerAngles = new Vector3(0,0,-f);
-
-            tutorialStorage_Txt.text = storage.ToString();
-            tutorialCapacity_Txt.text = "/" + capacity.ToString();
+            //Debug.Log();
             if (tutorialPanel.activeSelf) {
-                oreRate.text = GetOre(siliconOre).Rate.ToString();
+                tutorialPanel.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = gameManager.productionManager.GetCommodity(drillData).amount.ToString();
+                tutorialPanel.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = (gameManager.productionManager.GetCommodity(drillData).amount - drillSpare).ToString();
+                tutorialOreRate.text = "$" + GetOre(siliconOre).Rate.ToString("F2");
+                float f = Mathf.InverseLerp(0,capacity,storage);
+                f = Mathf.Lerp(-34f,34f,f);
+                tutorialDial_Obj.GetComponent<RectTransform>().eulerAngles = new Vector3(0,0,-f);
+
+                tutorialStorage_Txt.text = storage.ToString();
+                tutorialCapacity_Txt.text = "/" + capacity.ToString();
+            } else {
+                float f = Mathf.InverseLerp(0,capacity,storage);
+                f = Mathf.Lerp(-34f,34f,f);
+                dial_Obj.GetComponent<RectTransform>().eulerAngles = new Vector3(0,0,-f);
+
+                storage_Txt.text = storage.ToString();
+                capacity_Txt.text = "/" + capacity.ToString();
+
+                miningDrills_Txt.text = gameManager.productionManager.GetCommodity(drillData).amount.ToString();
+                drillsSpare_Txt.text = drillSpare.ToString();
             }
             if (leftCard.activeSelf) {
                 SetCardValues(leftCard, siliconOre); 
@@ -83,8 +100,9 @@ namespace Colony {
         void SetCardValues(GameObject card, OreData oreData) {
             card.transform.GetChild(0).GetComponent<TMP_Text>().text = oreData.title;
             Ore ore = GetOre(oreData);
-            card.transform.GetChild(2).GetChild(2).GetComponent<TMP_Text>().text = ore.Staffled.ToString();
-            card.transform.GetChild(3).GetComponent<TMP_Text>().text = ore.Rate.ToString();
+            card.transform.GetChild(2).GetChild(2).GetComponent<TMP_Text>().text = ore.Staffed.ToString();
+            card.transform.GetChild(3).GetComponent<TMP_Text>().text = ore.Amount.ToString();
+            card.transform.GetChild(4).GetComponent<TMP_Text>().text = "$" + ore.Rate.ToString("F2");
         }
 
         public void AddMiningCard(OreData oreData) {
@@ -101,15 +119,17 @@ namespace Colony {
             card.transform.GetChild(0).GetComponent<TMP_Text>().text = oreData.title;
             card.transform.GetChild(1).GetComponent<Image>().sprite = oreData.panelImage;
 
-            card.transform.GetChild(4).GetComponent<Button>().onClick.RemoveAllListeners();
-            card.transform.GetChild(4).GetComponent<Button>().onClick.AddListener(delegate() { MineButton(oreData); });
+            card.transform.GetChild(5).GetComponent<Button>().onClick.RemoveAllListeners();
+            card.transform.GetChild(5).GetComponent<Button>().onClick.AddListener(delegate() { MineButton(oreData); });
             SetCardValues(card, oreData);
 
         }
 
-        public void AddMiningDrill(CommodityData commodityData) {
+        public void AddOreBuilding(CommodityData commodityData, int amount) {
             if (commodityData == drillData) {
                 drillSpare++;
+            } else if (commodityData == tankData) {
+                UpgradeStorage(commodityData);
             }
         }
 
@@ -121,8 +141,6 @@ namespace Colony {
 
         public void MineButton(OreData oreData) {
             Mine(oreData, 1);
-            
-
         }
 
         public void Mine(OreData oreData, int growth) {
@@ -141,21 +159,14 @@ namespace Colony {
                 if (storage == capacity) {
                     break;
                 } else {
-                    int growth = ores[i].CalculateProd(gameManager.productionManager);
+                    int growth = ores[i].CalculateProd(gameManager.productionManager, drillData);
                     Mine(ores[i].data, growth);
                 }
             }
         }
 
-        public void UpgradeStorage() {
-            if (gameManager.money >= upgradeStorageCost) {
-                capacity = capacity + 1000;
-                gameManager.money -= upgradeStorageCost;
-                gameManager.textManager.SendMessageToChat("Storage Upgraded", Message.MessageType.info);
-                upgradeStorageCost = capacity / 10;
-            } else {
-                gameManager.textManager.SendMessageToChat("Not Enough Money", Message.MessageType.info);
-            }
+        public void UpgradeStorage(CommodityData commodity) {
+                capacity = capacity + commodity.value;
         }
 
         public Ore GetOre(OreData oreData) {
@@ -177,19 +188,21 @@ namespace Colony {
 
         public void AddStaff(OreData oreData) {
             Ore ore = GetOre(oreData);
-            if (isAddingStaff && drillSpare > 0) {
+            if (isAddingStaff && drillSpare > 0 && gameManager.popSpare > 0) {
                 ore.AddStaff(true);
                 drillSpare--;
-            } else if (!isAddingStaff && ore.Staffled > 0) {
+                gameManager.popSpare--;
+            } else if (!isAddingStaff && ore.Staffed > 0) {
                 ore.AddStaff(false);
                 drillSpare++;
+                gameManager.popSpare++;
             }
         }
 
         public (List<ShipItem>,int) LoadOre(OreData oreData, List<ShipItem> shipInventory, int shipSpace){
             //iterate through the list to find all the ship
             for (int i = 0; i < shipInventory.Count; i++) {
-                if (shipInventory[i].commodity.commodityType == CommodityData.CommodityType.Ore && shipInventory[i].commodity.commodityName != "Drill") {
+                if (shipInventory[i].commodity.resource == CommodityData.Resource.Ore && shipInventory[i].commodity.type == CommodityData.Type.Resource) {
                     if (oreData == null || shipInventory[i].commodity.OreData == oreData) {
                         Ore ore = GetOre(shipInventory[i].commodity.OreData);
                         if (ore != null) {
@@ -232,7 +245,7 @@ namespace Colony {
         private float rate;
         public int Amount { get { return amount; } private set { amount = value; } }
         private int amount;
-        public int Staffled { get { return staffed; } private set { staffed = value; } }
+        public int Staffed { get { return staffed; } private set { staffed = value; } }
         private int staffed;
 
         public Ore (OreData _oreData) {
@@ -249,8 +262,9 @@ namespace Colony {
             rate = (float)Math.Round(rate, 2);
         }
 
-        public int CalculateProd(ProductionManager productionManager) {
-            int growth = staffed;
+        public int CalculateProd(ProductionManager productionManager, CommodityData drillData) {
+            int growth = productionManager.CalculateProdStaffed(drillData,staffed);
+            Debug.Log(growth);
             return growth;
         }
 

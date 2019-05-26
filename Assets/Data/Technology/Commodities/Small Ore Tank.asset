@@ -10,15 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c71fd0a2006e54d35a5cc7cc50179b33, type: 3}
-  m_Name: Iron Mining
+  m_Name: Small Ore Tank
   m_EditorClassIdentifier: 
-  techName: Iron Ore
-  descrption: 'Learn how to mine Iron ore onto '
-  techSprite: {fileID: 21300000, guid: 6fa1f783fa7fa4055b8e96b739c9209f, type: 3}
-  startingTechnology: 0
-  researchCost: 3000
-  DependantTech:
-  - {fileID: 11400000, guid: e73f5d925675a474f92a0c091b7fffd3, type: 2}
+  techName: Small Ore Tank
+  descrption: A Tank that can store Ore
+  techSprite: {fileID: 0}
+  startingTechnology: 1
+  researchCost: 0
+  DependantTech: []
   techType: 0
   efficencymod: 0
-  commodity: {fileID: 11400000, guid: 0f98ec7083d1244d5ab4fbdb3a2e1021, type: 2}
+  commodity: {fileID: 11400000, guid: efa464b2f1c004f62ae36948b7c06920, type: 2}

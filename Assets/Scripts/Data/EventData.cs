@@ -35,8 +35,8 @@ namespace Colony {
         [Header("Effects")]
         public bool dialouge = true;
         public bool activatePanel;
+        public bool deactivatePanel;
         public string panelID;
-
-
+        public string deactivatePanelID;
     }
 }

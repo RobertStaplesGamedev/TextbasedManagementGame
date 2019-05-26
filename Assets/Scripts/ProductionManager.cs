@@ -71,8 +71,8 @@ namespace Colony {
                     if (commodities[x].commodityData.commodityName == shipItem.commodity.commodityName) {
                          commodities[x].amount += shipItem.amount;
                          shipItem.amount = 0;
-                         if (commodities[x].commodityData.commodityType == CommodityData.CommodityType.Ore) {
-                              gameManager.oreManager.AddMiningDrill(commodities[x].commodityData);
+                         if (commodities[x].commodityData.resource == CommodityData.Resource.Ore) {
+                              gameManager.oreManager.AddOreBuilding(commodities[x].commodityData, commodities[x].amount);
                          }
                          gameManager.mapManager.AddCommodity(commodities[x]);
                     }
@@ -82,23 +82,23 @@ namespace Colony {
           //Creates a Unique Commodity entity.
           public void CreateCommodity(CommodityData commodityData) {
                Commodity commodity = new Commodity(commodityData, commodityData.startAmount, 0,0);
-               if (commodityData.commodityType == CommodityData.CommodityType.Food) {
+               if (commodityData.resource == CommodityData.Resource.Food) {
                     commodity.productionLabel = Instantiate(producionPrefab, new Vector2(0,-productionCount["Food"]*20),Quaternion.identity);
                     commodity.productionLabel.transform.GetChild(0).GetComponent<TMP_Text>().text = commodity.commodityData.name + ":";
                     commodity.productionLabel.transform.SetParent(foodProductionLocation.transform,false);
                     productionCount["Food"] += 1;
 
-               } else if (commodityData.commodityType == CommodityData.CommodityType.Energy) {
+               } else if (commodityData.resource == CommodityData.Resource.Energy) {
                     commodity.productionLabel = Instantiate(producionPrefab, new Vector2(0,-productionCount["Energy"]*20),Quaternion.identity);
                     productionCount["Energy"] += 1;
                     commodity.productionLabel.transform.GetChild(0).GetComponent<TMP_Text>().text = commodity.commodityData.name + ":";
                     commodity.productionLabel.transform.SetParent(energyProductionLocation.transform,false);
 
-               } else if (commodityData.commodityType == CommodityData.CommodityType.Ore) {
+               } else if (commodityData.resource == CommodityData.Resource.Ore) {
                     commodity.productionLabel = oreProductionLocation;
                     productionCount["Ore"] += 1;
 
-               } else if (commodityData.commodityType == CommodityData.CommodityType.Research) {
+               } else if (commodityData.resource == CommodityData.Resource.Research) {
                     commodity.productionLabel = researchProductionLocation;
                     productionCount["Research"] += 1;
                }
@@ -116,11 +116,21 @@ namespace Colony {
                commodities.Add(commodity);
           }
 
-          public int CalculateProd(CommodityData.CommodityType commodityType) {
+          public int CalculateProd(CommodityData.Resource commodityType) {
                int growth = 0;
                for (int i = 0; i < commodities.Count ;i++) {
-                    if ((commodities[i].commodityData.commodityType == commodityType && !gameManager.inEnergyDebt) || commodities[i].commodityData.commodityType == commodityType && commodities[i].commodityData.commodityType == CommodityData.CommodityType.Energy) {
+                    if ((commodities[i].commodityData.resource == commodityType && !gameManager.inEnergyDebt) || (commodities[i].commodityData.resource == commodityType && commodities[i].commodityData.resource == CommodityData.Resource.Energy)) {
                          growth += (commodities[i].commodityData.value * commodities[i].staffed) + ((commodities[i].commodityData.value * commodities[i].staffed) * (commodities[i].modifier / 100));
+                    }
+               }
+               return growth;
+          }
+
+          public int CalculateProdStaffed(CommodityData commodityData, int staffed) {
+               int growth = 0;
+               for (int i = 0; i < commodities.Count ;i++) {
+                    if ((commodities[i].commodityData == commodityData && !gameManager.inEnergyDebt) || (commodities[i].commodityData == commodityData && commodities[i].commodityData.resource == CommodityData.Resource.Energy)) {
+                         growth += (commodities[i].commodityData.value * staffed) + ((commodities[i].commodityData.value * staffed) * (commodities[i].modifier / 100));
                     }
                }
                return growth;

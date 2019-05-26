@@ -20,4 +20,6 @@ MonoBehaviour:
   storageSucess: Solar panels loaded into ship
   storageFailMoney: Not enough money
   storageFailCap: Not enough space
-  commodityType: 2
+  type: 0
+  resource: 2
+  OreData: {fileID: 0}

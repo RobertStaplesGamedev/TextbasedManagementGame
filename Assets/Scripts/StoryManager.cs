@@ -78,15 +78,15 @@ namespace Colony {
             newEvent.eventData = eventData;
             return newEvent;
         }
-        public void ActivatePanel(string panelID) {
+        public void ActivatePanel(string panelID, bool setActive) {
             if (panelID == "Tech") {
-                techPanel.SetActive(true);
+                techPanel.SetActive(setActive);
             } else if (panelID == "Ore") {
-                orePanel.SetActive(true);
+                orePanel.SetActive(setActive);
             } else if (panelID == "Ship") {
-                shipPanel.SetActive(true);
+                shipPanel.SetActive(setActive);
             } else if (panelID == "Mining Pane") {
-                miningPanel.SetActive(true);
+                miningPanel.SetActive(setActive);
             }
         }
 
@@ -213,11 +213,20 @@ namespace Colony {
         }
 
         void Trigger(GameManager gameManager) {
-            if (activatePanel) {
-                gameManager.storyManager.ActivatePanel(panelID);
+            if (eventData.dialouge) {
+                gameManager.textManager.SendMessageToChat(dialougeText, Message.MessageType.dialouge);
             }
-            gameManager.textManager.SendMessageToChat(dialougeText, Message.MessageType.dialouge);
+            if (activatePanel) {
+                gameManager.storyManager.ActivatePanel(eventData.panelID, true);
+            }
+            if (eventData.deactivatePanel) {
+                gameManager.storyManager.ActivatePanel(eventData.deactivatePanelID, false);
+            }
             triggered = true;
         }
+    }
+    [System.Serializable]
+    public class Effect {
+
     }
 }

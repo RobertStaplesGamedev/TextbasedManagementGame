@@ -20,4 +20,6 @@ MonoBehaviour:
   storageSucess: Research station loaded into ship
   storageFailMoney: Not enough money
   storageFailCap: Not enough space
-  commodityType: 5
+  type: 0
+  resource: 5
+  OreData: {fileID: 0}

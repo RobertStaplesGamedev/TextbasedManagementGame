@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Silicon
   m_EditorClassIdentifier: 
   title: Silicon
-  panelImage: {fileID: 0}
+  panelImage: {fileID: 21300000, guid: 50f6fca4b462445b5ab323edf967e3a9, type: 3}
   rateCap: 1
   rateStart: 1
   RateBottom: 0.01

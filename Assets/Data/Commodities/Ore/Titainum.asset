@@ -20,5 +20,6 @@ MonoBehaviour:
   storageSucess: Titainum Ore loaded onto ship
   storageFailMoney: 
   storageFailCap: No space on ship
-  commodityType: 3
+  type: 1
+  resource: 3
   OreData: {fileID: 11400000, guid: 30c7e276ee31546d3aa6b246d6cd7931, type: 2}

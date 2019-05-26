@@ -32,6 +32,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: be6c87ad897a04c57b89789fd17002ea, type: 2}
   - {fileID: 11400000, guid: 733bcf7f587cc4c49a2f78c4e5699ddd, type: 2}
   - {fileID: 11400000, guid: 50b9ad5381c364734a9ea704e7a68767, type: 2}
+  - {fileID: 11400000, guid: a44d29f2016f8421987026e198935291, type: 2}
   commodities:
   - {fileID: 11400000, guid: 2374997fed7d44b0d930c0afe67cae0a, type: 2}
   - {fileID: 11400000, guid: 7580c1041a9a146ecbe105db4465594e, type: 2}
@@ -44,6 +45,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e73bbb68ef1264d8292422f838d67bb5, type: 2}
   - {fileID: 11400000, guid: a635f4850f1f4426384268a70ace4c7a, type: 2}
   - {fileID: 11400000, guid: 0f98ec7083d1244d5ab4fbdb3a2e1021, type: 2}
+  - {fileID: 11400000, guid: efa464b2f1c004f62ae36948b7c06920, type: 2}
   ore:
   - {fileID: 11400000, guid: 9406b7e44ef0446db9fedcd9f1d98308, type: 2}
   - {fileID: 11400000, guid: 3b19e21080469457fbdd801badd4486d, type: 2}

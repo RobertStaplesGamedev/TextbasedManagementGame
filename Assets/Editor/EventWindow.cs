@@ -38,7 +38,7 @@ namespace Colony {
         string[] commoditySuccess;
         string[] commodityMoneyFail;
         string[] commodityStorageFail;
-        CommodityData.CommodityType[] commodityTypes;
+        CommodityData.Resource[] commodityTypes;
         int[] techIndex;
         int[] commodIndex;
 
@@ -180,7 +180,7 @@ namespace Colony {
             commoditySuccess = new string[technologies.Length];
             commodityMoneyFail = new string[technologies.Length];
             commodityStorageFail = new string[technologies.Length];
-            commodityTypes = new CommodityData.CommodityType[technologies.Length];
+            commodityTypes = new CommodityData.Resource[technologies.Length];
             
             modifiers = new int[technologies.Length];
             depTechnologies = new TechnologyCard[technologies.Length, 10];
@@ -210,8 +210,8 @@ namespace Colony {
                 commoditySuccess[i] = technologies[i].commodity.storageSucess;
                 commodityMoneyFail[i] = technologies[i].commodity.storageFailMoney;
                 commodityStorageFail[i] = technologies[i].commodity.storageFailCap;
-                commodIndex[i] = (int)technologies[i].commodity.commodityType;
-                commodityTypes[i] = technologies[i].commodity.commodityType;
+                commodIndex[i] = (int)technologies[i].commodity.resource;
+                commodityTypes[i] = technologies[i].commodity.resource;
             }
 
             //Commodity Modifier
@@ -239,8 +239,8 @@ namespace Colony {
                 commoditySuccess[i] = technologies[i].commodity.storageSucess;
                 commodityMoneyFail[i] = technologies[i].commodity.storageFailMoney;
                 commodityStorageFail[i] = technologies[i].commodity.storageFailCap;
-                commodIndex[i] = (int)technologies[i].commodity.commodityType;
-                commodityTypes[i] = technologies[i].commodity.commodityType;
+                commodIndex[i] = (int)technologies[i].commodity.resource;
+                commodityTypes[i] = technologies[i].commodity.resource;
             }
 
             //Commodity Modifier
@@ -278,33 +278,33 @@ namespace Colony {
 
         }
 
-        CommodityData.CommodityType CommodityGUI (int i) {
+        CommodityData.Resource CommodityGUI (int i) {
             string[] options = {"Food","Money","Energy", "Ore", "Population", "Research"};
-            CommodityData.CommodityType commType;
+            CommodityData.Resource commType;
 
             commodIndex[i] = EditorGUILayout.Popup(commodIndex[i], options, GUILayout.Width(propertyLength));
             switch (commodIndex[i])
             {
                 case 0:
-                    commType = CommodityData.CommodityType.Food;
+                    commType = CommodityData.Resource.Food;
                     break;
                 case 1:
-                    commType = CommodityData.CommodityType.Money;
+                    commType = CommodityData.Resource.Money;
                     break;
                 case 2:
-                    commType = CommodityData.CommodityType.Energy;
+                    commType = CommodityData.Resource.Energy;
                     break;
                 case 3:
-                    commType = CommodityData.CommodityType.Ore;
+                    commType = CommodityData.Resource.Ore;
                     break;
                 case 4:
-                    commType = CommodityData.CommodityType.Population;
+                    commType = CommodityData.Resource.Population;
                     break;
                 case 5:
-                    commType = CommodityData.CommodityType.Research;
+                    commType = CommodityData.Resource.Research;
                     break;
                 default:
-                    commType = CommodityData.CommodityType.Food;
+                    commType = CommodityData.Resource.Food;
                     break;
             }
 

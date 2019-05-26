@@ -16,9 +16,12 @@ namespace Colony {
         public string storageFailMoney;
         public string storageFailCap;
 
-        public enum CommodityType {Food, Money, Energy, Ore, Population, Research}
-        public CommodityType commodityType;
+        public enum Type {Building, Resource}
+        public Type type;
 
-        public OreData OreData;
+        public enum Resource {Food, Money, Energy, Ore, Population, Research}
+        public Resource resource;
+
+        [HideInInspector] public OreData OreData;
     }
 }

@@ -20,5 +20,6 @@ MonoBehaviour:
   storageSucess: Silicon Ore loaded onto ship
   storageFailMoney: No space on ship
   storageFailCap: Loaded ore
-  commodityType: 3
+  type: 1
+  resource: 3
   OreData: {fileID: 11400000, guid: 9406b7e44ef0446db9fedcd9f1d98308, type: 2}
