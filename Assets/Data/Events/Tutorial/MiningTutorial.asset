@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c6449a78079e4eaab44626e9935fa6c, type: 3}
   m_Name: MiningTutorial
   m_EditorClassIdentifier: 
-  dialougeText: You have mining now, good job you. so... start?
+  dialougeText: 
   dependancies: 1
   dependantEvent: {fileID: 11400000, guid: b6473f71b26ed4f34943d494b06e1c3d, type: 2}
   triggerType: 3
@@ -25,6 +25,20 @@ MonoBehaviour:
   resourceValue: 0
   technology: {fileID: 11400000, guid: 733bcf7f587cc4c49a2f78c4e5699ddd, type: 2}
   shipLocation: 0
-  dialouge: 1
-  activatePanel: 1
-  panelID: Ore
+  effects:
+  - effectType: 0
+    dialougeText: You have mining now, good job you. so... start?
+    panelID: 
+    modifyCommodityEfficency: 0
+    commodityModified: {fileID: 0}
+    efficencyMod: 0
+    hasDuration: 0
+    durationInDays: 0
+  - effectType: 2
+    dialougeText: 
+    panelID: Ore
+    modifyCommodityEfficency: 0
+    commodityModified: {fileID: 0}
+    efficencyMod: 0
+    hasDuration: 0
+    durationInDays: 0

@@ -12,19 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c6449a78079e4eaab44626e9935fa6c, type: 3}
   m_Name: Full Game
   m_EditorClassIdentifier: 
-  dialougeText: OK. I have spoken to the higher ups and we have given you a loan to
-    get started. grab some farms and panels. hire some staff and get started
+  dialougeText: 
   dependancies: 1
   dependantEvent: {fileID: 11400000, guid: 50e43bfbc77a04d42ae66aede859596c, type: 2}
   triggerType: 4
   day: 0
   month: 0
   year: 0
+  oreData: {fileID: 0}
   resource: 0
   greaterThan: 0
   resourceValue: 0
   technology: {fileID: 0}
   shipLocation: 0
-  dialouge: 1
-  activatePanel: 0
-  panelID: 
+  effects:
+  - effectType: 0
+    dialougeText: OK. I have spoken to the higher ups and we have given you a loan
+      to get started. grab some farms and panels. hire some staff and get started
+    panelID: 
+    modifyCommodityEfficency: 0
+    commodityModified: {fileID: 0}
+    efficencyMod: 0
+    hasDuration: 0
+    durationInDays: 0

@@ -250,22 +250,18 @@ namespace Colony {
                 gameManger.textManager.SendMessageToChat(currentTech.techName + " Researched", Message.MessageType.info);
             }
             if (currentTech.techtype == TechnologyCard.TechType.Commodity) {
-                for (int i = 0; i < gameManger.shipManager.shipInventory.Count; i++) {
-                    if (currentTech.techCommodity == gameManger.shipManager.shipInventory[i].commodity) {
-                        gameManger.shipManager.shipInventory[i].commodObject.SetActive(true);
-                    }
-                }
                 if (currentTech.techCommodity.resource == CommodityData.Resource.Ore && currentTech.techCommodity.type != CommodityData.Type.Building) {
                     gameManger.oreManager.CreateOre(currentTech.techCommodity.OreData);
                     gameManger.oreManager.AddMiningCard(currentTech.techCommodity.OreData);
                 } else {
                     gameManger.productionManager.CreateCommodity(currentTech.techCommodity);
                 }
+                gameManger.shipManager.CreateShipItem(currentTech.techCommodity);
                 
             } else if (currentTech.techtype == TechnologyCard.TechType.CommodityModifier) {
                 for (int i = 0; i < gameManger.productionManager.commodities.Count; i++) {
-                    if (gameManger.productionManager.commodities[i].commodityData == currentTech.techCommodity) {
-                        gameManger.productionManager.commodities[i].modifier += currentTech.techCard.efficencymod;
+                    if (gameManger.productionManager.commodities[i].data == currentTech.techCommodity) {
+                        gameManger.productionManager.commodities[i].IncreaseProduction();
                     }
                 }
             }

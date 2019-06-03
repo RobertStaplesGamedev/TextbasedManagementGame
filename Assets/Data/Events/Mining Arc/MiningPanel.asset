@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c6449a78079e4eaab44626e9935fa6c, type: 3}
   m_Name: MiningPanel
   m_EditorClassIdentifier: 
-  dialougeText: It looks like your research is paying off. I've added a mining interface
-    for you to manage your work better
+  dialougeText: 
   dependancies: 0
   dependantEvent: {fileID: 0}
   triggerType: 3
@@ -26,8 +25,21 @@ MonoBehaviour:
   resourceValue: 0
   technology: {fileID: 11400000, guid: 50b9ad5381c364734a9ea704e7a68767, type: 2}
   shipLocation: 0
-  dialouge: 1
-  activatePanel: 1
-  deactivatePanel: 1
-  panelID: Mining Pane
-  deactivatePanelID: Ore
+  effects:
+  - effectType: 0
+    dialougeText: It looks like your research is paying off. I've added a mining interface
+      for you to manage your work better
+    panelID: 
+    modifyCommodityEfficency: 0
+    commodityModified: {fileID: 0}
+    efficencyMod: 0
+    hasDuration: 0
+    durationInDays: 0
+  - effectType: 2
+    dialougeText: 
+    panelID: Mining Pane
+    modifyCommodityEfficency: 0
+    commodityModified: {fileID: 0}
+    efficencyMod: 0
+    hasDuration: 0
+    durationInDays: 0

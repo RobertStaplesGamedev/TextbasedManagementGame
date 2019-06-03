@@ -5,8 +5,6 @@ using UnityEngine;
 namespace Colony {
     [CreateAssetMenu(menuName="Story/Event")]
     public class EventData : ScriptableObject {
-        public string dialougeText;
-        public bool dependancies;
         public EventData dependantEvent;
         public enum TriggerType {None, Time, Resource, Research, ShipLocation, Ore}
         public TriggerType triggerType;
@@ -31,12 +29,28 @@ namespace Colony {
 
         public int shipLocation;
 
+        public List<EffectData> effects;
 
-        [Header("Effects")]
-        public bool dialouge = true;
-        public bool activatePanel;
-        public bool deactivatePanel;
-        public string panelID;
-        public string deactivatePanelID;
+        [System.Serializable]
+        public class EffectData {
+
+            public enum EffectType {Dialouge, EfficencyMod, ActivatePanel, DeactivatePanel, Sickness, AddCommodityToShip, RemoveCommodityFromShip, ChangeOreCap}
+            public EffectType effectType;
+
+            public string dialougeText;
+            public Message.MessageType messageType;
+            public string panelID;
+            
+            public CommodityData commodityModified;
+            public int efficencyMod;
+
+            public OreData oredata;
+            public float oreCap;
+
+            public bool hasDuration;
+            public int durationInDays;
+
+
+        }        
     }
 }

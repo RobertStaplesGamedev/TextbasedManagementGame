@@ -12,19 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c6449a78079e4eaab44626e9935fa6c, type: 3}
   m_Name: Start
   m_EditorClassIdentifier: 
-  dialougeText: You have landed on mars a representative of the weyland corporation.
-    your job is to setup a rich and prosperous colony
+  dialougeText: 
   dependancies: 0
   dependantEvent: {fileID: 0}
   triggerType: 0
   day: 0
   month: 0
   year: 0
+  oreData: {fileID: 0}
   resource: 0
   greaterThan: 0
   resourceValue: 0
   technology: {fileID: 0}
   shipLocation: 0
-  dialouge: 1
-  activatePanel: 0
-  panelID: 
+  effects:
+  - effectType: 0
+    dialougeText: You have landed on mars a representative of the weyland corporation.
+      your job is to setup a rich and prosperous colony
+    panelID: 
+    modifyCommodityEfficency: 0
+    commodityModified: {fileID: 0}
+    efficencyMod: 0
+    hasDuration: 0
+    durationInDays: 0

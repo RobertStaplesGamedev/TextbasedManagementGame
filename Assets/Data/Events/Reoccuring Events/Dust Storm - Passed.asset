@@ -10,15 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c6449a78079e4eaab44626e9935fa6c, type: 3}
-  m_Name: ResearchPanel
+  m_Name: Dust Storm - Passed
   m_EditorClassIdentifier: 
-  dialougeText: 
-  dependancies: 1
-  dependantEvent: {fileID: 11400000, guid: a498f0d0d18d44b2285b75ede6f6f4d2, type: 2}
-  triggerType: 1
-  day: 5
-  month: 1
-  year: 2030
+  dependantEvent: {fileID: 11400000, guid: c5e811a1f301e4778b0491092364d3aa, type: 2}
+  triggerType: 0
+  day: 0
+  month: 0
+  year: 0
   oreData: {fileID: 0}
   resource: 0
   greaterThan: 0
@@ -27,19 +25,12 @@ MonoBehaviour:
   shipLocation: 0
   effects:
   - effectType: 0
-    dialougeText: You had a plan to make money right? no plan? you flew halfway across
-      the Solarsystem with no plan? FINE. figure out how to mine on this dead world
+    dialougeText: The Dust storm has Passed. solar output returned to normal
+    messageType: 1
     panelID: 
-    modifyCommodityEfficency: 0
     commodityModified: {fileID: 0}
     efficencyMod: 0
-    hasDuration: 0
-    durationInDays: 0
-  - effectType: 2
-    dialougeText: 
-    panelID: Tech
-    modifyCommodityEfficency: 0
-    commodityModified: {fileID: 0}
-    efficencyMod: 0
+    oredata: {fileID: 0}
+    oreCap: 0
     hasDuration: 0
     durationInDays: 0

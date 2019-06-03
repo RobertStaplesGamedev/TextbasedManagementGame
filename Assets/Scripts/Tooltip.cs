@@ -19,7 +19,7 @@ namespace Colony {
         bool interactable;
 
         void Start() {
-            tooltip = this.transform.GetChild(2).gameObject;
+            tooltip = this.transform.GetChild(1).gameObject;
             hoverdelaytime = 0.5f;
             tooltip.transform.GetComponent<RectTransform>().sizeDelta = new Vector2(tooltip.transform.GetComponent<RectTransform>().sizeDelta.x, size * 15);
         }

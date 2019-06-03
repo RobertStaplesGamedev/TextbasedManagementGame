@@ -70,6 +70,7 @@ namespace Colony {
 
         void Start() {
             techManager.CreateDatabase();
+            shipManager.CreateDatabase();
             productionManager.CreateDatabase();
             oreManager.CreateDatabase();
             storyManager.CreateDatabase();
@@ -176,19 +177,19 @@ namespace Colony {
                 } else {
                     int poplossCounter = popLoss;
                     for (int i = 0; i < productionManager.commodities.Count; i++) {
-                        if (productionManager.commodities[i].staffed > 0) {
-                            if (productionManager.commodities[i].staffed >= poplossCounter) {
-                                productionManager.commodities[i].staffed -= poplossCounter;
+                        if (productionManager.commodities[i].Staffed > 0) {
+                            if (productionManager.commodities[i].Staffed >= poplossCounter) {
+                                productionManager.commodities[i].ChangeStaff(poplossCounter);
                                 popAmount -= popLoss;
                                 poplossCounter = 0;
                                 textManager.SendMessageToChat("PERSON HAS DIED DUE TO LACK OF FOOD", Message.MessageType.warning);
-                                productionManager.commodities[i].productionLabel.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = productionManager.commodities[i].staffed.ToString();
-                            } else if (productionManager.commodities[i].staffed < poplossCounter) {
-                                productionManager.commodities[i].staffed = 0;
-                                poplossCounter -= productionManager.commodities[i].staffed;
+                                productionManager.commodities[i].productionLabel.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = productionManager.commodities[i].Staffed.ToString();
+                            } else if (productionManager.commodities[i].Staffed < poplossCounter) {
+                                productionManager.commodities[i].ClearStaff();
+                                poplossCounter -= productionManager.commodities[i].Staffed;
                                 popAmount -= popLoss;
                                 textManager.SendMessageToChat("PERSON HAS DIED DUE TO LACK OF FOOD", Message.MessageType.warning);
-                                productionManager.commodities[i].productionLabel.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = productionManager.commodities[i].staffed.ToString();
+                                productionManager.commodities[i].productionLabel.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = productionManager.commodities[i].Staffed.ToString();
                             }
                         }
                         if (poplossCounter <= 0) {

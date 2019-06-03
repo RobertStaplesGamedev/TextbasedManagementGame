@@ -17,10 +17,6 @@ namespace Colony {
         [SerializeField]
         List<Message> messageList = new List<Message>();
 
-        void Update() {
-
-        }
-
         public void SendMessageToChat(string text, Message.MessageType messageType) {
             if (messageList.Count >= maxMessages) {
                 Destroy(messageList[0].textObject.gameObject);

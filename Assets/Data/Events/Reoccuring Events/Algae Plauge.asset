@@ -10,15 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c6449a78079e4eaab44626e9935fa6c, type: 3}
-  m_Name: ResearchPanel
+  m_Name: Algae Plauge
   m_EditorClassIdentifier: 
-  dialougeText: 
-  dependancies: 1
-  dependantEvent: {fileID: 11400000, guid: a498f0d0d18d44b2285b75ede6f6f4d2, type: 2}
+  dependantEvent: {fileID: 0}
   triggerType: 1
-  day: 5
-  month: 1
-  year: 2030
+  day: 1
+  month: 9
+  year: 2033
   oreData: {fileID: 0}
   resource: 0
   greaterThan: 0
@@ -27,19 +25,22 @@ MonoBehaviour:
   shipLocation: 0
   effects:
   - effectType: 0
-    dialougeText: You had a plan to make money right? no plan? you flew halfway across
-      the Solarsystem with no plan? FINE. figure out how to mine on this dead world
+    dialougeText: Your Algae has come down with a plauge. Output Reduced by 50%
+    messageType: 2
     panelID: 
-    modifyCommodityEfficency: 0
     commodityModified: {fileID: 0}
     efficencyMod: 0
+    oredata: {fileID: 0}
+    oreCap: 0
     hasDuration: 0
     durationInDays: 0
-  - effectType: 2
+  - effectType: 1
     dialougeText: 
-    panelID: Tech
-    modifyCommodityEfficency: 0
+    messageType: 0
+    panelID: 
     commodityModified: {fileID: 0}
-    efficencyMod: 0
-    hasDuration: 0
-    durationInDays: 0
+    efficencyMod: -50
+    oredata: {fileID: 0}
+    oreCap: 0
+    hasDuration: 1
+    durationInDays: 60

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c6449a78079e4eaab44626e9935fa6c, type: 3}
   m_Name: ShipPanel
   m_EditorClassIdentifier: 
-  dialougeText: Ok send it back... On the ship? Now please
+  dialougeText: 
   dependancies: 1
   dependantEvent: {fileID: 11400000, guid: c9ce02bde31c2429d8c270c8d9f43e5e, type: 2}
   triggerType: 5
@@ -25,6 +25,20 @@ MonoBehaviour:
   resourceValue: 49
   technology: {fileID: 0}
   shipLocation: 0
-  dialouge: 1
-  activatePanel: 1
-  panelID: Ship
+  effects:
+  - effectType: 0
+    dialougeText: Ok send it back... On the ship? Now please
+    panelID: 
+    modifyCommodityEfficency: 0
+    commodityModified: {fileID: 0}
+    efficencyMod: 0
+    hasDuration: 0
+    durationInDays: 0
+  - effectType: 2
+    dialougeText: 
+    panelID: Ship
+    modifyCommodityEfficency: 0
+    commodityModified: {fileID: 0}
+    efficencyMod: 0
+    hasDuration: 0
+    durationInDays: 0

@@ -26,38 +26,38 @@ namespace Colony {
         }
 
         public void AddCommodity(Commodity commodity) {
-            if (commodity.commodityData.resource == CommodityData.Resource.Food && commodity.amount > 0) {
-                if (commodity.commodityData.commodityName == "Algae Farm") {
+            if (commodity.data.resource == CommodityData.Resource.Food && commodity.Amount > 0) {
+                if (commodity.data.commodityName == "Algae Farm") {
                     foodSprites.transform.GetChild(1).gameObject.SetActive(true);
-                } else if (commodity.commodityData.commodityName == "Potato Farm") {
+                } else if (commodity.data.commodityName == "Potato Farm") {
                     foodSprites.transform.GetChild(0).gameObject.SetActive(true);
-                } else if (commodity.commodityData.commodityName == "Wheat Farm") {
+                } else if (commodity.data.commodityName == "Wheat Farm") {
                     foodSprites.transform.GetChild(2).gameObject.SetActive(true);
                 }
-            } else if (commodity.commodityData.resource == CommodityData.Resource.Energy) {
-                if (commodity.commodityData.commodityName == "Solar Farm") {
+            } else if (commodity.data.resource == CommodityData.Resource.Energy) {
+                if (commodity.data.commodityName == "Solar Farm") {
                     AddMultiCommod(solarCount, commodity, energySprites.transform.GetChild(0).gameObject);
-                } else if (commodity.commodityData.commodityName == "Biofuel") {
+                } else if (commodity.data.commodityName == "Biofuel") {
                     AddMultiCommod(biofuelCount, commodity, energySprites.transform.GetChild(1).gameObject);
-                } else if (commodity.commodityData.commodityName == "Fusion") {
+                } else if (commodity.data.commodityName == "Fusion") {
                     AddMultiCommod(fusionCount, commodity, energySprites.transform.GetChild(2).gameObject);
                 }
-            } else if (commodity.commodityData.resource == CommodityData.Resource.Ore) {
-                if (commodity.commodityData.commodityName == "Drill") {
+            } else if (commodity.data.resource == CommodityData.Resource.Ore) {
+                if (commodity.data.commodityName == "Drill") {
                     AddMultiCommod(drillCount, commodity, drillSprites);
-                } else if (commodity.commodityData.commodityName == "Small Ore Tank") {
+                } else if (commodity.data.commodityName == "Small Ore Tank") {
                     AddMultiCommod(tankCount, commodity, tankSprites);
                 }
-            } else if (commodity.commodityData.resource == CommodityData.Resource.Research) {
+            } else if (commodity.data.resource == CommodityData.Resource.Research) {
                 AddMultiCommod(researchCount, commodity, researchSprites);
             }
         }
         
         void AddMultiCommod(int count, Commodity commodity, GameObject sprites) {
-            count = commodity.amount;
+            count = commodity.Amount;
             int tempCount = 1;
             int childCount = 1;
-            if (commodity.amount > 0) {
+            if (commodity.Amount > 0) {
                 sprites.transform.GetChild(0).gameObject.SetActive(true);
             }
             for (int i = 0; i < count; i++) {

@@ -53,7 +53,7 @@ namespace Colony {
         public void StartOre() {
             upgradeStorageCost = capacity / 10;
 
-            drillSpare = gameManager.productionManager.GetCommodity(drillData).amount;
+            drillSpare = gameManager.productionManager.GetCommodity(drillData).Amount;
             WriteValues();
         }
 
@@ -67,8 +67,8 @@ namespace Colony {
         public void WriteValues() {
             //Debug.Log();
             if (tutorialPanel.activeSelf) {
-                tutorialPanel.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = gameManager.productionManager.GetCommodity(drillData).amount.ToString();
-                tutorialPanel.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = (gameManager.productionManager.GetCommodity(drillData).amount - drillSpare).ToString();
+                tutorialPanel.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = gameManager.productionManager.GetCommodity(drillData).Amount.ToString();
+                tutorialPanel.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = (gameManager.productionManager.GetCommodity(drillData).Amount - drillSpare).ToString();
                 tutorialOreRate.text = "$" + GetOre(siliconOre).Rate.ToString("F2");
                 float f = Mathf.InverseLerp(0,capacity,storage);
                 f = Mathf.Lerp(-34f,34f,f);
@@ -83,8 +83,6 @@ namespace Colony {
 
                 storage_Txt.text = storage.ToString();
                 capacity_Txt.text = "/" + capacity.ToString();
-
-                miningDrills_Txt.text = gameManager.productionManager.GetCommodity(drillData).amount.ToString();
                 drillsSpare_Txt.text = drillSpare.ToString();
             }
             if (leftCard.activeSelf) {
@@ -200,22 +198,21 @@ namespace Colony {
         }
 
         public (List<ShipItem>,int) LoadOre(OreData oreData, List<ShipItem> shipInventory, int shipSpace){
-            //iterate through the list to find all the ship
             for (int i = 0; i < shipInventory.Count; i++) {
-                if (shipInventory[i].commodity.resource == CommodityData.Resource.Ore && shipInventory[i].commodity.type == CommodityData.Type.Resource) {
-                    if (oreData == null || shipInventory[i].commodity.OreData == oreData) {
-                        Ore ore = GetOre(shipInventory[i].commodity.OreData);
+                if (shipInventory[i].data.resource == CommodityData.Resource.Ore && shipInventory[i].data.type == CommodityData.Type.Resource) {
+                    if (oreData == null || shipInventory[i].data.OreData == oreData) {
+                        Ore ore = GetOre(shipInventory[i].data.OreData);
                         if (ore != null) {
                             if (shipSpace <= 0) {
                                 break;
                             } else if (ore.Amount <= shipSpace) {
                                 shipSpace -= ore.Amount;
-                                shipInventory[i].amount += ore.Amount;
+                                shipInventory[i].AddAmount(ore.Amount);
                                 storage -= ore.Amount;
                                 gameManager.textManager.SendMessageToChat(ore.Amount+ " " + ore.data.title +" Loaded into ship",Message.MessageType.info);
                                 ore.LoadOre(ore.Amount);
                             } else {
-                                shipInventory[i].amount += shipSpace;
+                                shipInventory[i].AddAmount(shipSpace);
                                 storage -= shipSpace;
                                 gameManager.textManager.SendMessageToChat(shipSpace+ " " + ore.data.title +" Loaded into ship",Message.MessageType.info);
                                 ore.LoadOre(shipSpace);
@@ -241,8 +238,15 @@ namespace Colony {
 
     public class Ore {
         public OreData data;
+
         public float Rate { get { return rate; } private set { rate = value; } }
         private float rate;
+        public float RateCap { get { return rateCap; } private set { rateCap = value; } }
+        private float rateCap;
+        public float RateBottom { get { return rateBottom; } private set { rateBottom = value; } }
+        private float rateBottom;
+
+
         public int Amount { get { return amount; } private set { amount = value; } }
         private int amount;
         public int Staffed { get { return staffed; } private set { staffed = value; } }
@@ -251,20 +255,27 @@ namespace Colony {
         public Ore (OreData _oreData) {
             data = _oreData;
             rate = _oreData.rateStart;
+            rateCap = data.rateCap;
+            rateBottom = data.RateBottom;
             amount = 0;
             staffed = 0;
         }
 
         public void IncreaseRate() {
-            if (rate < data.rateCap) {
+            if (rate < RateCap) {
                 rate += 0.01f;
+            } else {
+                rate = RateCap;
             }
             rate = (float)Math.Round(rate, 2);
         }
 
+        public void AdjustOreCap(float oreCap) {
+            rateCap += oreCap;
+        }
+
         public int CalculateProd(ProductionManager productionManager, CommodityData drillData) {
-            int growth = productionManager.CalculateProdStaffed(drillData,staffed);
-            Debug.Log(growth);
+            int growth = productionManager.CalculateProd(drillData,staffed);
             return growth;
         }
 
@@ -292,8 +303,8 @@ namespace Colony {
                 rate -= 0.01f;
             }
 
-            if (rate < data.RateBottom) {
-                rate = data.RateBottom;
+            if (rate < RateBottom) {
+                rate = RateBottom;
             }
             rate = (float)Math.Round(rate, 2);
             return profit;

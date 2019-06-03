@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d61ba99aa27854b92bc72d29c605b0dd, type: 3}
   m_Name: Silicon
   m_EditorClassIdentifier: 
-  commodityName: Silicon
+  commodityName: Silicon Ore
   cost: 0
   value: 1
   storage: 1
